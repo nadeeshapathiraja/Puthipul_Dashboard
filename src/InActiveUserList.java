@@ -33,7 +33,7 @@ public class InActiveUserList {
 		Thread.sleep(5000);
 
 		// if press List active user
-		driver.findElement(By.xpath("//span[contains(text(),'List Active Users')]")).click();
+		driver.findElement(By.xpath("//span[contains(text(),'List Inactive Users')]")).click();
 		Thread.sleep(15000);
 
 		// Active UserScreen
