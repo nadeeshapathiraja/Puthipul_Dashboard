@@ -75,7 +75,7 @@ public class ActiveUserList {
 			System.out.println("You are in Wrong Page");
 		}
 		
-		//Press Edit button
+		//Press Edit button and go to the Edit user Page
 		driver.findElement(By.xpath("//tr[1]//td[6]//button[1]//span[1]//*[local-name()='svg']")).click();
 		Thread.sleep(15000);
 		
