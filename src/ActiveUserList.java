@@ -98,6 +98,7 @@ public class ActiveUserList {
 		WebElement inputBox = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div/div/div/div[1]/div[1]/div/div/input"));
 		String textInsideInputBox = inputBox.getAttribute("value");
 		System.out.println(textInsideInputBox);
+		System.out.println(valueIneed1);
 		Thread.sleep(10000);
 
 		//Phone Number Field not empty and equal to first one
@@ -115,38 +116,41 @@ public class ActiveUserList {
 		//Set Values For Text Fields
 		
 		
-//		
-//		
-//		WebElement email = driver.findElement(By.xpath("//input[@type='text'][@name='email']"));
-//		driver.findElement(By.xpath("//input[@type='text'][@name='email']")).clear();
-//		Thread.sleep(1000);
-//		email.sendKeys("abc@gmail.com");
-//		
-//		WebElement fname = driver.findElement(By.xpath("//input[@type='text'][@name='firstName']"));
-//		driver.findElement(By.xpath("//input[@type='text'][@name='firstName']")).clear();
-//		Thread.sleep(1000);
-//		fname.sendKeys("Sumudu");
-//		
-//		WebElement lname = driver.findElement(By.xpath("//input[@type='text'][@name='lastName']"));
-//		driver.findElement(By.xpath("//input[@type='text'][@name='lastName']")).clear();
-//		Thread.sleep(1000);
-//		lname.sendKeys("Sadaruwan");
-//		
+		
+		
+		WebElement email = driver.findElement(By.xpath("//input[@type='text'][@name='email']"));
+		driver.findElement(By.xpath("//input[@type='text'][@name='email']")).clear();
+		Thread.sleep(1000);
+		email.click();
+		email.sendKeys("abc@gmail.com");
+		
+		WebElement fname = driver.findElement(By.xpath("//input[@type='text'][@name='firstName']"));
+		driver.findElement(By.xpath("//input[@type='text'][@name='firstName']")).clear();
+		Thread.sleep(1000);
+		fname.click();
+		fname.sendKeys("Sumudu");
+		
+		WebElement lname = driver.findElement(By.xpath("//input[@type='text'][@name='lastName']"));
+		driver.findElement(By.xpath("//input[@type='text'][@name='lastName']")).clear();
+		Thread.sleep(1000);
+		lname.click();
+		lname.sendKeys("Sadaruwan");
+		
 		//Click Update Button
 		driver.findElement(By.xpath("//span[text()='Update Customer']")).click();
 		Thread.sleep(15000);
-//		
-//		//Check Is it Updated
-//		WebElement tableRowEdit2 = baseTable.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div[2]/div[1]/table/tbody/tr[1]"));
-//		Thread.sleep(5000);
-//		WebElement cellIneedEdit2 = tableRowEdit2.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div[2]/div[1]/table/tbody/tr[1]/td[2]"));
-//		String valueIneedEdit2 = cellIneedEdit2.getText();
-//		
-//		if(valueIneedEdit2.equals("Sumudu Sadaruwan")) {
-//			System.out.println("Update Successfull");
-//		}else {
-//			System.out.println("Update Unsuccessfull");
-//		}
+		
+		//Check Is it Updated
+		WebElement tableRowEdit2 = baseTable.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div[2]/div[1]/table/tbody/tr[1]"));
+		Thread.sleep(5000);
+		WebElement cellIneedEdit2 = tableRowEdit2.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div[2]/div[1]/table/tbody/tr[1]/td[2]"));
+		String valueIneedEdit2 = cellIneedEdit2.getText();
+		
+		if(valueIneedEdit2.equals("Sumudu Sadaruwan")) {
+			System.out.println("Update Successfull");
+		}else {
+			System.out.println("Update Unsuccessfull");
+		}
 		
 		//Delete Row 1   
 		driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div[2]/div[1]/table/tbody/tr[1]/td[6]/button[2]")).click();
@@ -165,6 +169,22 @@ public class ActiveUserList {
 		}else {
 			System.out.println("Delete Unsuccessfull");
 		}
+		
+		//Click Sort Button
+		driver.findElement(By.xpath("//select[@name='sort']")).click();
+		Thread.sleep(5000);
+		
+		//You Can Change New Or Old Lists
+		String value = "New List"; 
+		if(value.equals("New List")) {
+			driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div[1]/div[3]/div/select/option[1]")).click();
+			Thread.sleep(5000);
+		}else {
+			driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div[1]/div[3]/div/select/option[2]")).click();
+			Thread.sleep(5000);
+		}
+		
+		
 		
 		
 		
