@@ -2,6 +2,7 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -67,9 +68,10 @@ public class ActiveUserList {
 		// To find 1st row of table and its 1st Column for get the phone number
 		WebElement tableRow1 = baseTable.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div[2]/div[1]/table/tbody/tr[1]"));
 		Thread.sleep(5000);
-		WebElement cellIneed1 = tableRow1.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div[2]/div[1]/table/tbody/tr[1]/td[1]"));
+		WebElement cellIneed1 = tableRow1.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div[2]/div[1]/table/tbody/tr[1]/td[2]"));
 		String valueIneed1 = cellIneed1.getText();
-		
+		Thread.sleep(5000);
+		System.out.println(valueIneed1);
 		//Confirm User in COrrect Page     .size();
 		if(valueIneed3.equals("Yes") && valueIneed6.equals("Yes")) {
 			System.out.println("You are In Active User Page");
@@ -113,64 +115,75 @@ public class ActiveUserList {
 		}
 		Thread.sleep(5000);
 		
-		//Set Values For Text Fields
 		
-		
-		
-		
-		WebElement email = driver.findElement(By.xpath("//input[@type='text'][@name='email']"));
-		driver.findElement(By.xpath("//input[@type='text'][@name='email']")).clear();
+		//Clear All Input Fields //Set Values For Text Fields
+		WebElement email = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div/div/div/div[1]/div[2]/div/div/input"));
+		if(email.equals("")) {
+			email.sendKeys("pqr@gmail.com");
+		}else {
+			email.clear();
+			email.sendKeys("pqr@gmail.com");
+			email.sendKeys(Keys.SPACE, Keys.BACK_SPACE);
+		}
 		Thread.sleep(1000);
-		email.click();
-		email.sendKeys("abc@gmail.com");
 		
-		WebElement fname = driver.findElement(By.xpath("//input[@type='text'][@name='firstName']"));
-		driver.findElement(By.xpath("//input[@type='text'][@name='firstName']")).clear();
+		WebElement fname = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div/div/div/div[1]/div[3]/div/div/input"));
+		if(fname.equals("")) {
+			fname.sendKeys("Nadeesha");
+		}else {
+			fname.clear();
+			fname.sendKeys("Nadeesha");
+			fname.sendKeys(Keys.SPACE, Keys.BACK_SPACE);
+		}
 		Thread.sleep(1000);
-		fname.click();
-		fname.sendKeys("Sumudu");
 		
-		WebElement lname = driver.findElement(By.xpath("//input[@type='text'][@name='lastName']"));
-		driver.findElement(By.xpath("//input[@type='text'][@name='lastName']")).clear();
+		WebElement lname = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div/div/div/div[1]/div[4]/div/div/input"));
+		if(lname.equals("")) {
+			lname.sendKeys("Pathiraja");
+		}else {
+			lname.clear();
+			lname.sendKeys("Pathiraja");
+			fname.sendKeys(Keys.SPACE, Keys.BACK_SPACE);
+		}
 		Thread.sleep(1000);
-		lname.click();
-		lname.sendKeys("Sadaruwan");
 		
 		//Click Update Button
 		driver.findElement(By.xpath("//span[text()='Update Customer']")).click();
 		Thread.sleep(15000);
+	
+//		//Check Is it Updated Successful 
+//		WebElement tableRowEdit2 = baseTable.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div[2]/div[1]/table/tbody/tr[1]"));
+//		Thread.sleep(5000);
+//		WebElement cellIneedEdit2 = tableRowEdit2.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div[2]/div[1]/table/tbody/tr[1]/td[3]"));
+//		String valueIneedEdit2 = cellIneedEdit2.getText();
+//		Thread.sleep(10000);
+//		if(valueIneedEdit2.equals("Nadeesha Pathiraja")) {
+//			System.out.println("Update Successfull");
+//		}else {
+//			System.out.println("Update Unsuccessfull");
+//		}
 		
-		//Check Is it Updated
-		WebElement tableRowEdit2 = baseTable.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div[2]/div[1]/table/tbody/tr[1]"));
-		Thread.sleep(5000);
-		WebElement cellIneedEdit2 = tableRowEdit2.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div[2]/div[1]/table/tbody/tr[1]/td[2]"));
-		String valueIneedEdit2 = cellIneedEdit2.getText();
 		
-		if(valueIneedEdit2.equals("Sumudu Sadaruwan")) {
-			System.out.println("Update Successfull");
-		}else {
-			System.out.println("Update Unsuccessfull");
-		}
 		
-		//Delete Row 1   
-		driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div[2]/div[1]/table/tbody/tr[1]/td[6]/button[2]")).click();
-		Thread.sleep(5000);
-		driver.findElement(By.xpath("//span[text()='Yes']")).click();
-		
-		//After Delete Row 1
-		WebElement tableRowD1 = baseTable.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div[2]/div[1]/table/tbody/tr[1]"));
-		Thread.sleep(5000);
-		WebElement cellIneedD1 = tableRowD1.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div[2]/div[1]/table/tbody/tr[1]/td[1]"));
-		String valueIneedD1 = cellIneedD1.getText();
-		Thread.sleep(15000);
-		//Compare Before and After Values
-		if(!valueIneed1.equals(valueIneedD1)) {
-			System.out.println("Delete Successfull");
-		}else {
-			System.out.println("Delete Unsuccessfull");
-		}
-		
-		//Click Sort Button
+//		//Delete Row 1   
+//		driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div[2]/div[1]/table/tbody/tr[1]/td[6]/button[2]")).click();
+//		Thread.sleep(5000);
+//		driver.findElement(By.xpath("//span[text()='Yes']")).click();
+//		
+//		//After Delete Row 1
+//		WebElement tableRowD1 = baseTable.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div[2]/div[1]/table/tbody/tr[1]"));
+//		Thread.sleep(5000);
+//		WebElement cellIneedD1 = tableRowD1.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div[2]/div[1]/table/tbody/tr[1]/td[1]"));
+//		String valueIneedD1 = cellIneedD1.getText();
+//		Thread.sleep(15000);
+//		//Compare Before and After Values
+//		if(!valueIneed1.equals(valueIneedD1)) {
+//			System.out.println("Delete Successfull");
+//		}else {
+//			System.out.println("Delete Unsuccessfull");
+//		}
+	
+		//Click Sort Button for test Sort
 		driver.findElement(By.xpath("//select[@name='sort']")).click();
 		Thread.sleep(5000);
 		
@@ -183,11 +196,7 @@ public class ActiveUserList {
 			driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[2]/div/div[1]/div[3]/div/select/option[2]")).click();
 			Thread.sleep(5000);
 		}
-		
-		
-		
-		
-		
+		 
 		// Close Driver
 		Thread.sleep(10000);
 		// Close the Browser  
